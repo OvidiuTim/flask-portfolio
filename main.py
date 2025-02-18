@@ -4,18 +4,6 @@ import smtplib
 import requests
 
 
-'''
-Red underlines? Install the required packages first: 
-Open the Terminal in PyCharm (bottom left). 
-
-On Windows type:
-python -m pip install -r requirements.txt
-
-On MacOS type:
-pip3 install -r requirements.txt
-
-This will install the packages from requirements.txt for this project.
-'''
 
 app = Flask(__name__)
 
@@ -58,10 +46,18 @@ def thelake():
     return render_template("thelakehome.html")
 
 
+@app.route("/project/formwork")
+def formwork():
+    return render_template("formwork.html")
 
 
+@app.route("/project/inventory")
+def inventory():
+    return render_template("inventory.html")
 
-
+@app.route("/project/taskapp")
+def taskapp():
+    return render_template("taskapp.html")
 
 
 
