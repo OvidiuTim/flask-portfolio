@@ -800,15 +800,49 @@ section {
 }
 
 /*projects page*/
+.sameline {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.goback {
+  margin-bottom: 30px;
+  padding: 0 4px 5px 0;
+  border-bottom: 1px solid #27AE60;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+}
+.goback span{
+  display: flex;
+  align-items: center;
+}
+.goback img {
+  height: 20px;
+  align-self: center;
+}
+.goback:hover{
+  border-bottom: 1px solid #fff;
+}
+
 .images-wrapper{
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   overflow-x: hidden;
+  gap: 40px;
 }
 .images-wrapper img{
-  width: 100% !important;
+  width: 100%;
+  max-width: 376.65px;
+  height: auto;
+  aspect-ratio:  1 / 1;
+  object-fit: cover;
 }
 #tasks {
   padding-left: 0;
@@ -816,10 +850,11 @@ section {
   border-left: none;
   border-top: 1px solid var(--color-grey-5);
 }
-/*#about{
+#project-about {
   border: none; 
   padding: 0 0 3rem 0;
-}*/
+}
+
 @media only screen and (min-width:700px){
   #tasks {
     padding-left: 3rem;
@@ -956,8 +991,7 @@ section {
   .contact-item .icon {
     grid-template-columns: 25px 1fr;
   }
-
-  .main-title h2 {
+  .main-title h2 span {
     font-size: 2rem;
   }
   .main-title h2 span {
@@ -1010,6 +1044,7 @@ section {
   .header-content .right-header {
     padding-right: 9rem;
   }
+  
 }
 @media screen and (max-width: 660px) {
   .blogs {
@@ -1037,6 +1072,7 @@ section {
   .main-title h2 .bg-text {
     font-size: 4.5rem;
   }
+  
 }
 @media screen and (max-width: 970px) {
   .container {
@@ -1088,7 +1124,7 @@ section {
   .timeline {
     grid-template-columns: repeat(1, 1fr);
   }
-
+  
   .main-title h2 {
     font-size: 3rem;
   }
@@ -1098,6 +1134,15 @@ section {
   .main-title h2 .bg-text {
     font-size: 4rem;
   }
+
+}
+
+@media only screen and (min-width: 1000px) {
+  /*.sameline {
+    justify-content: center;
+  }*/
+  
+  
 }
 
 /*# sourceMappingURL=styles.css.map */
@@ -1108,18 +1153,7 @@ section {
 }
 
 
-/* go back*/
-.goback {
-  display: flex;
-  text-align: left !important;
-}
 
-.goback img {
-height: 50px;
-margin-right: 100px;
-cursor: pointer;
-
-}
 
 #main-img{
   width: 100%;
