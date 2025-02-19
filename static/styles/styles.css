@@ -414,10 +414,13 @@ section {
 .portfolios .portfolio-item {
   position: relative;
   border-radius: 15px;
+
 }
 .portfolios .portfolio-item img {
   width: 100%;
-  height: 300px;
+  /*height: 300px;*/
+  height: auto;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 15px;
 }
@@ -734,6 +737,68 @@ section {
   padding-left: 0;
 }
 
+/*contact form section*/
+.right-contact {
+  width: 100%;
+  margin: auto;
+}
+#contactForm input, #contactForm textarea{
+  background-color: #191d2b;
+  border: 1px solid #27AE60 ;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  margin-bottom: 15px;
+  width: 100%;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+
+#submitButton {
+  border-radius: 30px;
+  font-weight: 600;
+  color: #fff;
+  font-size: 17.6px;
+  font-family: "Poppins", sans-serif;
+  position: relative;
+  background-color: #191d2b;
+  border: 1px solid #27AE60;
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+ /* padding: 0 2rem;*/
+}
+#submitButton .btn-icon {
+  background-color: #27AE60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 1rem;
+}
+#submitButton .main-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: all 0.4s ease-out;
+  z-index: -1;
+}
+#submitButton .main-btn:hover {
+  transition: all 0.4s ease-out;
+}
+#submitButton .main-btn:hover::before {
+  width: 100%;
+  height: 100%;
+  background-color: #27AE60;
+  transform: translateX(0);
+  transition: all 0.4s ease-out;
+}
+
 /*projects page*/
 .images-wrapper{
   width: 100%;
@@ -751,10 +816,10 @@ section {
   border-left: none;
   border-top: 1px solid var(--color-grey-5);
 }
-#about{
+/*#about{
   border: none; 
   padding: 0 0 3rem 0;
-}
+}*/
 @media only screen and (min-width:700px){
   #tasks {
     padding-left: 3rem;
@@ -762,10 +827,10 @@ section {
     border-left: 1px solid var(--color-grey-5);
     border-top: none;
   }
-  #about{
+  /*#about{
     border: none; 
     padding: 0 3rem 0 0;
-  }
+  }*/
 }
 
 @media screen and (max-width: 600px) {
