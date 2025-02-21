@@ -60,6 +60,25 @@ def taskapp():
     return render_template("taskapp.html")
 
 
+@app.route("/project/wp")
+def wordpress():
+    return render_template("wordpress.html")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
