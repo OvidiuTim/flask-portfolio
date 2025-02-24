@@ -11,6 +11,52 @@
 })();
 
 
+//go back
+document.addEventListener("DOMContentLoaded", function() {
+  // Check if the URL contains the 'section=portfolio' parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  if(urlParams.get('section') === 'portfolio'){
+      // Remove 'active-btn' from the current active control
+      const currentActive = document.querySelector(".active-btn");
+      if(currentActive) {
+          currentActive.classList.remove("active-btn");
+      }
+      // Activate the portfolio control
+      const portfolioControl = document.querySelector('.control[data-id="portfolio"]');
+      if(portfolioControl) {
+          portfolioControl.classList.add("active-btn");
+      }
+
+      // Update the active content section
+      const currentActiveSection = document.querySelector(".active");
+      if(currentActiveSection) {
+          currentActiveSection.classList.remove("active");
+      }
+      const portfolioSection = document.getElementById("portfolio");
+      if(portfolioSection) {
+          portfolioSection.classList.add("active");
+      }
+
+      // Optionally remove the 'deactive' class from all control elements
+      document.querySelectorAll(".controls .control").forEach(control => {
+          control.classList.remove("deactive");
+      });
+  }
+});
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
 // Select the button and the main text element
 const lakeHomeBtn = document.getElementById('lake-home-btn');
 const mainText = document.getElementById('main-text');
@@ -163,54 +209,5 @@ DmxBtn.addEventListener('click', () => {
 
 
 
-//go back
-(function () {
-    [...document.querySelectorAll(".goback")].forEach(button => {
-        button.addEventListener("click", function() {
-            // Remove 'active-btn' from the current active control
-            document.querySelector(".active-btn").classList.remove("active-btn");
-            
-            // Make the 'portfolio' control the active-btn
-            const portfolioControl = document.querySelector('.control[data-id="portfolio"]');
-            portfolioControl.classList.add("active-btn");
 
-            // Switch active section to portfolio
-            document.querySelector(".active").classList.remove("active");
-            document.getElementById("portfolio").classList.add("active");
-
-            // Remove 'deactive' class from all .control elements
-            document.querySelectorAll(".controls .control").forEach(control => {
-                control.classList.remove("deactive");
-            });
-        });
-    });
-
-
-})();
-
-
-
-document.getElementById("contactForm").addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent default form submission
-
-  let formData = new FormData(this);
-
-  fetch("/contact", {
-    method: "POST",
-    body: formData,
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      alert(data.message);  // Show an alert with success message
-      document.getElementById("contactForm").style.display = "none"; // Hide form
-      document.getElementById("successMessage").style.display = "block"; // Show success message
-    } else {
-      alert("Error: " + data.message);
-    }
-  })
-  .catch(error => {
-    console.error("Error:", error);
-    alert("There was an error sending your message.");
-  });
-});
+*/

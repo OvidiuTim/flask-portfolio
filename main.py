@@ -66,8 +66,9 @@ def wordpress():
 
 
 
-
-
+@app.route("/project/automations")
+def automations():
+    return render_template("automations.html")
 
 
 
