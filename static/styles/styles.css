@@ -399,6 +399,12 @@ section {
 .timeline .timeline-item p {
   color: var(--color-grey-2);
 }
+.timeline-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%; /* Adjust the width of the images */
+}
 
 .port-text {
   padding: 2rem 0;
@@ -829,21 +835,17 @@ section {
   border-bottom: 1px solid #fff;
 }
 
-.images-wrapper{
+.images-wrapper {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  overflow-x: hidden;
-  gap: 40px;
+  justify-content: center; /* Centers the images */
+  align-items: center; /* Aligns them vertically */
+  gap: 40px; /* Keeps some distance between them */
 }
-.images-wrapper img{
-  width: 100%;
-  max-width: 376.65px;
-  height: auto;
-  aspect-ratio:  1 / 1;
-  object-fit: cover;
-}
+
+
+
 #tasks {
   padding-left: 0;
   padding-top: 3rem;
@@ -856,6 +858,7 @@ section {
 }
 
 @media only screen and (min-width:700px){
+
   #tasks {
     padding-left: 3rem;
     padding-top: 0;
@@ -866,6 +869,8 @@ section {
     border: none; 
     padding: 0 3rem 0 0;
   }*/
+
+
 }
 
 @media screen and (max-width: 600px) {
@@ -1002,6 +1007,8 @@ section {
   }
 }
 @media screen and (max-width: 1432px) {
+
+  
   .container {
     padding: 7rem 11rem;
   }
@@ -1030,8 +1037,19 @@ section {
   .main-title h2 .bg-text {
     font-size: 5.5rem;
   }
+
+  
+  .images-wrapper {
+    flex-direction: column; /* Stack images vertically */
+    align-items: center; /* Center them */
+  }
+
+  .images-wrapper img {
+    max-width: 100%; /* Make images larger on mobile */
+  }
 }
 @media screen and (max-width: 1250px) {
+  
   .blogs {
     grid-template-columns: repeat(2, 1fr);
     margin-top: 6rem;
@@ -1047,6 +1065,7 @@ section {
   
 }
 @media screen and (max-width: 660px) {
+  
   .blogs {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -1056,6 +1075,7 @@ section {
   }
 }
 @media screen and (max-width: 1070px) {
+
   .about-container {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -1155,8 +1175,10 @@ section {
 
 
 
-#main-img{
-  width: 100%;
+#main-img {
+  width: 95%; /* Make the image smaller */
+  display: block; /* Ensures margin auto works */
+  margin: 0 auto; /* Centers the image horizontally */
 }
 
 .main-title p{
