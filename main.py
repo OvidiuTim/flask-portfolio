@@ -1,43 +1,52 @@
-from flask import Flask, render_template, redirect, url_for
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import smtplib
-import requests
-
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy import Integer, String, Boolean
 
 
 app = Flask(__name__)
 
+# CREATE DB
+class Base(DeclarativeBase):
+    pass
+# Connect to Database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forms.db'
+db = SQLAlchemy(model_class=Base)
+db.init_app(app)
+
+
+
+# form TABLE Configuration
+class Form(db.Model):
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
+    email: Mapped[str] = mapped_column(String(500), nullable=False)
+    phone: Mapped[str] = mapped_column(String(500), nullable=False)
+    message: Mapped[str] = mapped_column(String(250), nullable=False)
+
+
+with app.app_context():
+    db.create_all()
+
+
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-    show_form=True
-
     if request.method == "POST":
-
-        name = request.form["name"]
-        email = request.form["email"]
-        phone = request.form["phone"]
-        message = request.form["message"]
-        # with open("example.txt", "a") as file:
-        #     file.write(f"Name: {name}, msg: {message}")
-
+        new_form = Form(
+            name=request.form.get("name"),
+            email=request.form.get("email"),
+            phone=request.form.get("phone"),
+            message=request.form.get("message"),
+        )
+        db.session.add(new_form)
+        db.session.commit()
         
-        myemail = "pirvu177@gmail.com"
-        password = "cula gyqb ypmm owlf "
-        with smtplib.SMTP("smtp.gmail.com") as connection:
-            connection.starttls()
-            connection.login(user=myemail, password=password)
-            connection.sendmail(from_addr=myemail,
-                                to_addrs=myemail,
-                                msg=f"Subject:New Message \n\nName {name},  {email}, {phone},{message} ")
-            connection.close()
-        show_form=False
-        print(show_form)
-        return render_template("index.html",  show_form=show_form)
-    print(show_form)
-    return render_template("index.html",  show_form=show_form)
+        # Return a JSON response instead of JavaScript
+        return jsonify({"success": True, "message": "Your form was submitted successfully!"})
 
-
+    return render_template("index.html")
 
 
 
