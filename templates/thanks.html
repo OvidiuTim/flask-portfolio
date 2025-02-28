@@ -9,8 +9,32 @@
     <body>
 
 
-        <header class="container header active" id="home">
-            <a class="goback" data-id="portfolio" href="{{ url_for('home') }}">
+        <section class="container header active" id="home">
+            <div class="blogs-content">
+                <div class="main-title">
+                    <div class="sameline">
+                        <a class="goback" data-id="portfolio" href="{{ url_for('home') }}">
+                            <span><img src="../static/img/icon/back.png" alt=""></span> Back
+                        </a>
+                        <div style="height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                            <h2>Thank <span>you!</span><span class="bg-text">Thank you!</span></h2>
+                            <br><br>
+                            <p style="text-align: center !important; padding-top: 3.5rem;">
+I sincerely appreciate you reaching out and exploring my portfolio. Your message has been successfully received, and I’ll get back to you as soon as possible.
+
+In the meantime, feel free to browse through my work and learn more about my projects, expertise, and the innovative solutions I create. If you have any additional questions or ideas you'd like to discuss, I’m always happy to connect.        <br><br>
+Looking forward to our conversation!
+                                <br><br>   
+                            </p>
+
+                            <h5 >Ovidiu Pirvu</h5>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            <!--<a class="goback" data-id="portfolio" href="{{ url_for('home') }}">
                 <span><img src="../static/img/icon/back.png" alt=""></span> Back
             </a>
             <div class="header-content">
@@ -30,7 +54,7 @@
                 <div class="right-header">
 
                 </div>
-            </div>
-        </header>
+            </div>-->
+        </section>
     </body>
 </html>
