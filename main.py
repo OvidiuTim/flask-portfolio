@@ -20,10 +20,10 @@ db.init_app(app)
 # form TABLE Configuration
 class Form(db.Model):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    name: Mapped[str] = mapped_column(String(250), unique=True, nullable=False)
-    email: Mapped[str] = mapped_column(String(500), nullable=False)
-    phone: Mapped[str] = mapped_column(String(500), nullable=False)
-    message: Mapped[str] = mapped_column(String(250), nullable=False)
+    name: Mapped[str] = mapped_column(String(250), nullable=False)
+    email: Mapped[str] = mapped_column(String(250), nullable=False)
+    phone: Mapped[str] = mapped_column(String(250), nullable=False)
+    message: Mapped[str] = mapped_column(String(5000), nullable=False)
 
 
 with app.app_context():
@@ -33,6 +33,7 @@ with app.app_context():
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+    form_send = True
     if request.method == "POST":
         new_form = Form(
             name=request.form.get("name"),
@@ -44,9 +45,9 @@ def home():
         db.session.commit()
         
         # Return a JSON response instead of JavaScript
-        return jsonify({"success": True, "message": "Your form was submitted successfully!"})
+        return render_template("thanks.html")
 
-    return render_template("index.html")
+    return render_template("index.html", form_send=form_send)
 
 
 
@@ -81,7 +82,9 @@ def automations():
 
 
 
-
+@app.route("/thankyou")
+def thanks():
+    return render_template("thanks.html")
 
 
 

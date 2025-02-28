@@ -21,7 +21,6 @@
     <header class="container header active" id="home">
         <div class="header-content">
             <div class="left-header">
-                <div class="h-shape"></div>
                 <div class="image">
                     <img src="static/img/EU1.png" alt="">
                 </div>
@@ -566,8 +565,8 @@
                         </div> 
 
                         <div class="right-contact">
-                            
-                            <form id="contactForm" name="sentMessage" action="/" method="post">
+                            {% if form_send  %}
+                            <form id="contactForm" name="sentMessage" action="/" method="post" >
                                 <div class="form-floating">
                                     <input class="form-control" id="name" name="name" type="text"
                                         placeholder="Name" required />
@@ -596,6 +595,7 @@
                                     Send
                                 </button>-->
                             </form>
+                            {% endif %}
                            
 
                         </div>
