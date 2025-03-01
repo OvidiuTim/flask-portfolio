@@ -89,7 +89,16 @@ def thanks():
 
 
 
-
+@app.route("/api/messages", methods=["GET"])
+def get_messages():
+    messages = Form.query.all()
+    return jsonify([{
+        "id": msg.id,
+        "name": msg.name,
+        "email": msg.email,
+        "phone": msg.phone,
+        "message": msg.message
+    } for msg in messages])
 
 
 
