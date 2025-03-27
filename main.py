@@ -103,5 +103,34 @@ def get_messages():
 
 
 
+@app.route("/pt", methods=["GET", "POST"])
+def home_pt():
+    form_send = True
+    if request.method == "POST":
+        new_form = Form(
+            name=request.form.get("name"),
+            email=request.form.get("email"),
+            phone=request.form.get("phone"),
+            message=request.form.get("message"),
+        )
+        db.session.add(new_form)
+        db.session.commit()
+        
+        # Return a JSON response instead of JavaScript
+        return render_template("thanks.html")
+
+    return render_template("index_pt.html", form_send=form_send)
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
